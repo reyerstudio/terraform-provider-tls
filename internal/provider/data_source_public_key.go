@@ -105,6 +105,10 @@ func (d *publicKeyDataSource) Schema(ctx context.Context, req datasource.SchemaR
 					"Only available if the selected private key format is compatible, as per the rules for " +
 					"`public_key_openssh` and [ECDSA P224 limitations](../../docs#limitations).",
 			},
+			"public_key_fingerprint_x509_sha256": schema.StringAttribute{
+				Computed:    true,
+				Description: "The SHA256 hash of the binary key data, encoded as a base64 string",
+			},
 			"id": schema.StringAttribute{
 				Computed: true,
 				Description: "Unique identifier for this data source: " +

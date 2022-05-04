@@ -71,7 +71,7 @@ D9Hk2MajZuFnJiqj1QIDAQAB
 	TestPublicKeyOpenSSH                  = `ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDPLaq43D9C596ko9yQipWUf2FbRhFs18D3wBDBqXLIoP7W3rm5S292/JiNPa+mX76IYFF416zTBGG9J5w4d4VFrROn8IuMWqHgdXsCUf2szN7EnJcVBsBzTxxWqz4DjX315vbm/PFOLlKzC0Ngs4h1iDiCD9Hk2MajZuFnJiqj1Q==`
 	TestPublicKeyOpenSSHFingerprintMD5    = `62:c2:c6:7a:d0:27:72:e7:0d:bc:4e:97:42:0e:9e:e6`
 	TestPublicKeyOpenSSHFingerprintSHA256 = `SHA256:V5XlMMAMdN4T4S2uBqiXBuI2C9VPNG2J8a5r1Vb8Vn8`
-
+	TestPublicKeyX509FingerprintSHA256    = "Tjv0oV3kNJRjpeIadBtzbRYjG7IG/jnSyOEJnr7FL1s="
 	// NOTE: See ../scripts/make-test-ca.tf for a Terraform script to create the following CA Private Key and Certificate.
 	TestCAPrivateKey = `
 -----BEGIN RSA PRIVATE KEY-----

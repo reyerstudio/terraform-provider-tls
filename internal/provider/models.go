@@ -65,18 +65,19 @@ type certificateSubjectModel struct {
 }
 
 type privateKeyResourceModel struct {
-	Algorithm                  types.String `tfsdk:"algorithm"`
-	OpenSSHComment             types.String `tfsdk:"openssh_comment"`
-	RSABits                    types.Int64  `tfsdk:"rsa_bits"`
-	ECDSACurve                 types.String `tfsdk:"ecdsa_curve"`
-	PrivateKeyPem              types.String `tfsdk:"private_key_pem"`
-	PrivateKeyOpenSSH          types.String `tfsdk:"private_key_openssh"`
-	PrivateKeyPKCS8            types.String `tfsdk:"private_key_pem_pkcs8"`
-	PublicKeyPem               types.String `tfsdk:"public_key_pem"`
-	PublicKeyOpenSSH           types.String `tfsdk:"public_key_openssh"`
-	PublicKeyFingerprintMD5    types.String `tfsdk:"public_key_fingerprint_md5"`
-	PublicKeyFingerprintSHA256 types.String `tfsdk:"public_key_fingerprint_sha256"`
-	ID                         types.String `tfsdk:"id"`
+	Algorithm                      types.String `tfsdk:"algorithm"`
+	OpenSSHComment                 types.String `tfsdk:"openssh_comment"`
+	RSABits                        types.Int64  `tfsdk:"rsa_bits"`
+	ECDSACurve                     types.String `tfsdk:"ecdsa_curve"`
+	PrivateKeyPem                  types.String `tfsdk:"private_key_pem"`
+	PrivateKeyOpenSSH              types.String `tfsdk:"private_key_openssh"`
+	PrivateKeyPKCS8                types.String `tfsdk:"private_key_pem_pkcs8"`
+	PublicKeyPem                   types.String `tfsdk:"public_key_pem"`
+	PublicKeyOpenSSH               types.String `tfsdk:"public_key_openssh"`
+	PublicKeyFingerprintMD5        types.String `tfsdk:"public_key_fingerprint_md5"`
+	PublicKeyFingerprintSHA256     types.String `tfsdk:"public_key_fingerprint_sha256"`
+	PublicKeyFingerprintX509SHA256 types.String `tfsdk:"public_key_fingerprint_x509_sha256"`
+	ID                             types.String `tfsdk:"id"`
 }
 
 type selfSignedCertResourceModel struct {
