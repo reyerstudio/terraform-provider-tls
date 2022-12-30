@@ -33,6 +33,7 @@ func TestDataSourceCertificate_CertificateContent(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.serial_number", "266244246501122064554217434340898012243"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.is_ca", "false"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.max_path_length", "-1"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.version", "3"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.issuer", "CN=Root CA,O=Test Org,L=Here"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.subject", "CN=Child Cert,O=Child Co.,L=Everywhere"),
@@ -109,6 +110,7 @@ func TestAccDataSourceCertificate_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.serial_number", "266244246501122064554217434340898012243"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.is_ca", "false"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.max_path_length", "-1"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.version", "3"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.issuer", "CN=Root CA,O=Test Org,L=Here"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.subject", "CN=Child Cert,O=Child Co.,L=Everywhere"),
@@ -142,6 +144,7 @@ func TestAccDataSourceCertificate_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.serial_number", "266244246501122064554217434340898012243"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.is_ca", "false"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.max_path_length", "-1"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.version", "3"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.issuer", "CN=Root CA,O=Test Org,L=Here"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.subject", "CN=Child Cert,O=Child Co.,L=Everywhere"),
@@ -179,6 +182,7 @@ func TestAccDataSourceCertificate_TerraformIO(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.signature_algorithm", "SHA256-RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.is_ca", "true"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.max_path_length", "0"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.sha1_fingerprint", "933c6ddee95c9c41a40f9f50493d82be03ad87bf"),
 
 					// R3
@@ -188,6 +192,7 @@ func TestAccDataSourceCertificate_TerraformIO(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.signature_algorithm", "SHA256-RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.is_ca", "true"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.max_path_length", "0"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.sha1_fingerprint", "a053375bfe84e8b748782c7cee15827a6af5a405"),
 
 					// terraform.io
@@ -197,6 +202,7 @@ func TestAccDataSourceCertificate_TerraformIO(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.2.signature_algorithm", "SHA256-RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.2.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.2.is_ca", "false"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.2.max_path_length", "-1"),
 					// NOTE: Not checking the fingerprint, as this certificate is auto-updated frequently:
 					//   all the other data are stable, but the signature changes every time.
 				),
@@ -237,6 +243,7 @@ func TestAccDataSourceCertificate_BadSSL(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.signature_algorithm", "SHA256-RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.is_ca", "true"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.max_path_length", "0"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.sha1_fingerprint", "7890c8934d5869b25d2f8d0d646f9a5d7385ba85"),
 
 					// BadSSL
@@ -246,6 +253,7 @@ func TestAccDataSourceCertificate_BadSSL(t *testing.T) {
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.signature_algorithm", "SHA256-RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.public_key_algorithm", "RSA"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.is_ca", "false"),
+					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.max_path_length", "-1"),
 					r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.sha1_fingerprint", "8eab9294263239177f7bb1ced4a246965dc8afa0"),
 				),
 			},
@@ -596,6 +604,7 @@ func localTestCertificateChainCheckFunc() r.TestCheckFunc {
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.public_key_algorithm", "RSA"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.serial_number", "60512478256160404377639062250777657301"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.is_ca", "true"),
+		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.max_path_length", "-1"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.version", "3"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.issuer", "CN=Root CA,O=Test Org,L=Here"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.0.subject", "CN=Root CA,O=Test Org,L=Here"),
@@ -609,6 +618,7 @@ func localTestCertificateChainCheckFunc() r.TestCheckFunc {
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.public_key_algorithm", "RSA"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.serial_number", "266244246501122064554217434340898012243"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.is_ca", "false"),
+		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.max_path_length", "-1"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.version", "3"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.issuer", "CN=Root CA,O=Test Org,L=Here"),
 		r.TestCheckResourceAttr("data.tls_certificate.test", "certificates.1.subject", "CN=Child Cert,O=Child Co.,L=Everywhere"),
