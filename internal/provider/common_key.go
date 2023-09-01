@@ -12,6 +12,7 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/x509"
+	"encoding/base64"
 	"encoding/pem"
 	"fmt"
 	"strings"
@@ -183,6 +184,9 @@ func setPublicKeyAttributes(ctx context.Context, s *tfsdk.State, prvKey crypto.P
 		Type:  PreamblePublicKey.String(),
 		Bytes: pubKeyBytes,
 	}
+	hasher := crypto.SHA256.New()
+	hasher.Write(pubKeyBytes)
+	pubKeyDERFingerprintSHA256 := hasher.Sum(nil)
 
 	diags.Append(s.SetAttribute(ctx, path.Root("id"), hashForState(string(pubKeyBytes)))...)
 	if diags.HasError() {
@@ -190,6 +194,11 @@ func setPublicKeyAttributes(ctx context.Context, s *tfsdk.State, prvKey crypto.P
 	}
 
 	diags.Append(s.SetAttribute(ctx, path.Root("public_key_pem"), string(pem.EncodeToMemory(pubKeyPemBlock)))...)
+	if diags.HasError() {
+		return diags
+	}
+
+	diags.Append(s.SetAttribute(ctx, path.Root("public_key_fingerprint_x509_sha256"), base64.StdEncoding.EncodeToString(pubKeyDERFingerprintSHA256))...)
 	if diags.HasError() {
 		return diags
 	}
