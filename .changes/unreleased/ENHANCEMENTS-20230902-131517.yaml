@@ -1,8 +1,0 @@
-kind: ENHANCEMENTS
-body: 'data-source/tls_certificate: New attribute `max_path_length`
-  resource/tls_self_signed_cert: New attributes `max_path_length`, `name_constraint_excluded_dns_names`, `name_constraint_permitted_dns_names`, `name_constraint_permitted_dns_names_critical`
-  resource/tls_locally_signed_cert: New attributes `max_path_length`, `name_constraint_excluded_dns_names`, `name_constraint_permitted_dns_names`, `name_constraint_permitted_dns_names_critical`, `set_authority_key_id`
-  resource/`'
-time: 2023-09-02T13:15:17.312254+02:00
-custom:
-  Issue: "309"

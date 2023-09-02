@@ -230,3 +230,16 @@ NOTES:
 
 * Same functionality as that of Terraform 0.9.8. Repacked as part of [Provider
   Splitout](https://www.hashicorp.com/blog/upcoming-provider-changes-in-terraform-0-10/)
+## 4.0.4-1 (September 02, 2023)
+
+NOTES:
+
+* This Go module has been updated to Go 1.19 per the [Go support policy](https://golang.org/doc/devel/release.html#policy). Any consumers building on earlier Go versions may experience errors. ([#330](https://github.com/hashicorp/terraform-provider-tls/issues/330))
+
+ENHANCEMENTS:
+
+* resource/tls_private_key: add openssh_comment attribute data-source/tls_public_key: add openssh_comment attribute ([#395](https://github.com/hashicorp/terraform-provider-tls/issues/395))
+* data-source/tls_certificate: Parse multiple certificates from single data source ([#356](https://github.com/hashicorp/terraform-provider-tls/issues/356))
+* data-source/tls_certificate: New attribute `max_path_length` resource/tls_self_signed_cert: New attributes `max_path_length`, `name_constraint_excluded_dns_names`, `name_constraint_permitted_dns_names`, `name_constraint_permitted_dns_names_critical` resource/tls_locally_signed_cert: New attributes `max_path_length`, `name_constraint_excluded_dns_names`, `name_constraint_permitted_dns_names`, `name_constraint_permitted_dns_names_critical`, `set_authority_key_id` resource/` ([#309](https://github.com/hashicorp/terraform-provider-tls/issues/309))
+* data-source/tls_public_key: Add attribute `public_key_fingerprint_x509_sha256` data-source/tls_private_key: Add attribute `public_key_fingerprint_x509_sha256` ([#203](https://github.com/hashicorp/terraform-provider-tls/issues/203))
+
