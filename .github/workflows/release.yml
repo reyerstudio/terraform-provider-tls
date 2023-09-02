@@ -12,8 +12,8 @@ permissions:
   contents: read # Changelog commit operations use service account PAT
 
 env:
-  CI_COMMIT_AUTHOR: hc-github-team-tf-provider-devex
-  CI_COMMIT_EMAIL: github-team-tf-provider-devex@hashicorp.com
+  CI_COMMIT_AUTHOR: sestegra
+  CI_COMMIT_EMAIL: sestegra@gmail.com
 
 jobs:
   changelog-version:
