@@ -381,6 +381,11 @@ func (r *privateKeyResource) ImportState(ctx context.Context, req resource.Impor
 		resp.Diagnostics.AddError("Error parsing private key", err.Error())
 	}
 
+	// Set the default values for the attributes
+	resp.State.SetAttribute(ctx, path.Root("rsa_bits"), 2048)
+	resp.State.SetAttribute(ctx, path.Root("ecdsa_curve"), P224.String())
+
+	// Set the attributes on the State
 	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("algorithm"), algo)...)
 	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("private_key_pem"), string(bytes))...)
 	resp.Diagnostics.Append(setPublicKeyAttributes(ctx, &resp.State, key)...)
@@ -388,7 +393,7 @@ func (r *privateKeyResource) ImportState(ctx context.Context, req resource.Impor
 	case *rsa.PrivateKey:
 		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("rsa_bits"), int64(k.N.BitLen()))...)
 	case *ecdsa.PrivateKey:
-		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("ecdsa_curve"), k.Curve.Params().Name)...)
+		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("ecdsa_curve"), strings.Replace(k.Curve.Params().Name, "-", "", -1))...)
 	case ed25519.PrivateKey:
 		// Nothing to do
 	}
