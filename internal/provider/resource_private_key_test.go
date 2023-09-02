@@ -37,7 +37,7 @@ func TestPrivateKeyRSA(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-rsa `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$")),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`)),
 				),
 			},
 			{
@@ -85,7 +85,7 @@ func TestAccPrivateKeyRSA_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-rsa `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$")),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`)),
 				),
 			},
 			{
@@ -118,7 +118,7 @@ func TestAccPrivateKeyRSA_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-rsa `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$")),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`)),
 				),
 			},
 		},
@@ -149,7 +149,7 @@ func TestAccPrivateKeyRSA_UpgradeFromVersion3_1_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-rsa `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestCheckNoResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256"),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$")),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`)),
 				),
 			},
 			{
@@ -182,7 +182,7 @@ func TestAccPrivateKeyRSA_UpgradeFromVersion3_1_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-rsa `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$")),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`)),
 				),
 			},
 		},
@@ -207,7 +207,7 @@ func TestPrivateKeyECDSA(t *testing.T) {
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_openssh", ""),
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", ""),
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", ""),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$")),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`)),
 				),
 			},
 			{
@@ -225,7 +225,7 @@ func TestPrivateKeyECDSA(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ecdsa-sha2-nistp256 `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$")),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`)),
 				),
 			},
 		},
@@ -250,7 +250,7 @@ func TestAccPrivateKeyECDSA_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_openssh", ""),
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", ""),
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", ""),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 			{
 				ProtoV5ProviderFactories: protoV5ProviderFactories(),
@@ -276,7 +276,7 @@ func TestAccPrivateKeyECDSA_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_openssh", ""),
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", ""),
 					r.TestCheckResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", ""),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 		},
 	})
@@ -301,7 +301,7 @@ func TestAccPrivateKeyECDSA_UpgradeFromVersion3_1_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ecdsa-sha2-nistp256 `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestCheckNoResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256"),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 			{
 				ProtoV5ProviderFactories: protoV5ProviderFactories(),
@@ -329,7 +329,7 @@ func TestAccPrivateKeyECDSA_UpgradeFromVersion3_1_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ecdsa-sha2-nistp256 `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 		},
 	})
@@ -353,7 +353,7 @@ func TestPrivateKeyED25519(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-ed25519 `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 		},
 	})
@@ -377,7 +377,7 @@ func TestAccPrivateKeyED25519_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-ed25519 `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 			{
 				ProtoV5ProviderFactories: protoV5ProviderFactories(),
@@ -403,7 +403,7 @@ func TestAccPrivateKeyED25519_UpgradeFromVersion3_4_0(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(`^ssh-ed25519 `)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 		},
 	})
@@ -429,7 +429,7 @@ func TestOpenSSHComment(t *testing.T) {
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_openssh", regexp.MustCompile(` test@test\n$`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_md5", regexp.MustCompile(`^([abcdef\d]{2}:){15}[abcdef\d]{2}`)),
 					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_sha256", regexp.MustCompile(`^SHA256:`)),
-					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile("^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$"))),
+					r.TestMatchResourceAttr("tls_private_key.test", "public_key_fingerprint_x509_sha256", regexp.MustCompile(`^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=|[A-Za-z0-9+\\/]{4})$`))),
 			},
 		},
 	})
