@@ -1,0 +1,6 @@
+kind: ENHANCEMENTS
+body: 'data-source/tls_public_key: Add attribute `public_key_fingerprint_x509_sha256`
+  data-source/tls_private_key: Add attribute `public_key_fingerprint_x509_sha256`'
+time: 2023-09-02T13:34:30.514904+02:00
+custom:
+  Issue: "203"

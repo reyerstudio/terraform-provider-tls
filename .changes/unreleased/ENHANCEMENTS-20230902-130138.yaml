@@ -1,0 +1,5 @@
+kind: ENHANCEMENTS
+body: 'data-source/tls_certificate: Parse multiple certificates from single data source'
+time: 2023-09-02T13:01:38.897985+02:00
+custom:
+  Issue: "356"
