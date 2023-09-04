@@ -11,9 +11,11 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
@@ -33,6 +35,7 @@ type privateKeyResource struct{}
 var (
 	_ resource.Resource                 = (*privateKeyResource)(nil)
 	_ resource.ResourceWithUpgradeState = (*privateKeyResource)(nil)
+	_ resource.ResourceWithImportState  = (*privateKeyResource)(nil)
 )
 
 func NewPrivateKeyResource() resource.Resource {
@@ -365,6 +368,35 @@ func (r *privateKeyResource) Update(_ context.Context, _ resource.UpdateRequest,
 func (r *privateKeyResource) Delete(ctx context.Context, _ resource.DeleteRequest, _ *resource.DeleteResponse) {
 	// NO-OP: Returning no error is enough for the framework to remove the resource from state.
 	tflog.Debug(ctx, "Removing private key from state")
+}
+
+func (r *privateKeyResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	bytes, err := os.ReadFile(req.ID)
+	if err != nil {
+		resp.Diagnostics.AddError("Could not read file", err.Error())
+		return
+	}
+	key, algo, err := parsePrivateKeyPEM(bytes)
+	if err != nil {
+		resp.Diagnostics.AddError("Error parsing private key", err.Error())
+	}
+
+	// Set the default values for the attributes
+	resp.State.SetAttribute(ctx, path.Root("rsa_bits"), 2048)
+	resp.State.SetAttribute(ctx, path.Root("ecdsa_curve"), P224.String())
+
+	// Set the attributes on the State
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("algorithm"), algo)...)
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("private_key_pem"), string(bytes))...)
+	resp.Diagnostics.Append(setPublicKeyAttributes(ctx, &resp.State, key)...)
+	switch k := key.(type) {
+	case *rsa.PrivateKey:
+		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("rsa_bits"), int64(k.N.BitLen()))...)
+	case *ecdsa.PrivateKey:
+		resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("ecdsa_curve"), strings.Replace(k.Curve.Params().Name, "-", "", -1))...)
+	case ed25519.PrivateKey:
+		// Nothing to do
+	}
 }
 
 func (r *privateKeyResource) UpgradeState(ctx context.Context) map[int64]resource.StateUpgrader {
